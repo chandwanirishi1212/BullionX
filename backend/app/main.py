@@ -45,6 +45,17 @@ app.add_middleware(
 )
 
 
+@app.get("/")
+def root():
+    return {
+        "name": "BullionX API",
+        "status": "ok",
+        "docs": "/docs",
+        "health": "/api/health",
+        "rates": "/api/rates/ahmedabad",
+    }
+
+
 @app.get("/api/health", response_model=HealthResponse)
 def health(db: Session = Depends(get_db)):
     try:

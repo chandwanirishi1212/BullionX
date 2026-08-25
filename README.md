@@ -38,7 +38,7 @@ The dashboard is available at http://localhost:5173. Set `VITE_API_URL` if the b
 
 With Docker installed, run `docker compose up --build`. The application is then available at http://localhost:8080, with the API reverse-proxied through the same origin and the SQLite database persisted in a named volume. The first startup performs an initial Ahmedabad scrape; later updates are handled by the scheduler.
 
-For Render, use Python `3.13.11`, build command `pip install -r backend/requirements.txt`, and start command `uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT`. Set `PYTHON_VERSION=3.13.11`, `ENABLE_SCHEDULER=false`, and `CORS_ORIGINS` to the deployed frontend URL. The backend now creates the SQLite directory automatically on startup.
+For Render, use the included `render.yaml` Blueprint, or set Python `3.13.11`, build command `pip install -r backend/requirements.txt`, and start command `python scripts/init_db.py && (python scripts/run_scraper.py || true) && uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT`. Set `PYTHON_VERSION=3.13.11`, `ENABLE_SCHEDULER=true`, and `CORS_ORIGINS` to the deployed frontend URL. The initial startup scrape populates the first rates, and the backend creates the SQLite directory automatically on startup.
 
 ## API
 
