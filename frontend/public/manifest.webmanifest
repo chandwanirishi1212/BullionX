@@ -1,0 +1,10 @@
+{
+  "name": "BullionX Market Intelligence",
+  "short_name": "BullionX",
+  "description": "Live gold and silver market intelligence for India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111214",
+  "theme_color": "#e0b65c",
+  "icons": []
+}
