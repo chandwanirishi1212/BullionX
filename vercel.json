@@ -2,10 +2,18 @@
   "services": {
     "frontend": {
       "root": "frontend",
-      "framework": "vite"
+      "framework": "vite",
+      "build": {
+        "command": "npm run build",
+        "outputs": ["dist"]
+      }
     },
     "backend": {
-      "root": "backend"
+      "root": "backend",
+      "runtime": "python@3.11",
+      "build": {
+        "command": "pip install -r requirements.txt"
+      }
     }
   },
   "rewrites": [
@@ -23,5 +31,11 @@
         "service": "frontend"
       }
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "API_BASE_URL": "@api_base_url"
+  },
+  "buildCommand": "npm --prefix frontend run build",
+  "outputDirectory": "frontend/dist"
 }
